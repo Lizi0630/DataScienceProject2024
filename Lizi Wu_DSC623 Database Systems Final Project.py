@@ -1,277 +1,223 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "ea3cb377-aba4-4e99-9fc4-6a2349b733a1",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "import sqlite3\n",
-    "\n",
-    "# Connect to the SQLite database\n",
-    "db_connect = sqlite3.connect('pawsome_pets_final.db')\n",
-    "cursor = db_connect.cursor()\n",
-    "\n",
-    "# Create tables\n",
-    "cursor.execute('''\n",
-    "    CREATE TABLE IF NOT EXISTS Clinic (\n",
-    "        clinicNo INTEGER PRIMARY KEY, \n",
-    "        cName TEXT NOT NULL CHECK (length(cName) <= 100), \n",
-    "        cAddress TEXT NOT NULL CHECK (length(cAddress) <= 200), \n",
-    "        cPhone TEXT NOT NULL CHECK (length(cPhone) = 10 AND cPhone GLOB '[0-9]*'),\n",
-    "        staffNo INTEGER UNIQUE,\n",
-    "        FOREIGN KEY (staffNo) REFERENCES Staff(staffNo)\n",
-    "    );\n",
-    "''')\n",
-    "\n",
-    "cursor.execute('''\n",
-    "    CREATE TABLE IF NOT EXISTS Staff (\n",
-    "        staffNo INTEGER PRIMARY KEY,\n",
-    "        sName TEXT NOT NULL CHECK (length(sName) <= 100),\n",
-    "        sAddress TEXT NOT NULL CHECK (length(sAddress) <= 200),\n",
-    "        sPhone TEXT NOT NULL CHECK (length(sPhone) = 10 AND sPhone GLOB '[0-9]*'),\n",
-    "        sDOB DATE NOT NULL,\n",
-    "        position TEXT NOT NULL CHECK (length(position) <= 50),\n",
-    "        salary REAL NOT NULL CHECK (salary > 0),\n",
-    "        clinicNo INTEGER NOT NULL,\n",
-    "        FOREIGN KEY (clinicNo) REFERENCES Clinic(clinicNo)\n",
-    "    );\n",
-    "''')\n",
-    "\n",
-    "cursor.execute('''\n",
-    "    CREATE TABLE IF NOT EXISTS Owner (\n",
-    "        ownerNo INTEGER PRIMARY KEY,\n",
-    "        oName TEXT NOT NULL CHECK (length(oName) <= 100),\n",
-    "        oAddress TEXT NOT NULL CHECK (length(oAddress) <= 200),\n",
-    "        oPhone TEXT NOT NULL CHECK (length(oPhone) = 10 AND oPhone GLOB '[0-9]*')\n",
-    "    );\n",
-    "''')\n",
-    "\n",
-    "cursor.execute('''\n",
-    "    CREATE TABLE IF NOT EXISTS Pet (\n",
-    "        petNo INTEGER PRIMARY KEY,\n",
-    "        pName TEXT NOT NULL CHECK (length(pName) <= 100),\n",
-    "        pDOB DATE NOT NULL,\n",
-    "        species TEXT NOT NULL CHECK (length(species) <= 50),\n",
-    "        breed TEXT NOT NULL CHECK (length(breed) <= 50),\n",
-    "        color TEXT NOT NULL CHECK (length(color) <= 50),\n",
-    "        ownerNo INTEGER NOT NULL,\n",
-    "        clinicNo INTEGER NOT NULL,\n",
-    "        FOREIGN KEY (ownerNo) REFERENCES Owner(ownerNo),\n",
-    "        FOREIGN KEY (clinicNo) REFERENCES Clinic(clinicNo)\n",
-    "    );\n",
-    "''')\n",
-    "\n",
-    "cursor.execute('''\n",
-    "    CREATE TABLE IF NOT EXISTS Examination (\n",
-    "        examNo INTEGER PRIMARY KEY,\n",
-    "        complaint TEXT NOT NULL CHECK (length(complaint) <= 500),\n",
-    "        description TEXT NOT NULL CHECK (length(description) <= 1000),\n",
-    "        date DATE NOT NULL,\n",
-    "        action TEXT NOT NULL CHECK (length(action) <= 500),\n",
-    "        petNo INTEGER NOT NULL,\n",
-    "        staffNo INTEGER NOT NULL,\n",
-    "        FOREIGN KEY (petNo) REFERENCES Pet(petNo),\n",
-    "        FOREIGN KEY (staffNo) REFERENCES Staff(staffNo)\n",
-    "    );\n",
-    "''')\n",
-    "\n",
-    "print(\"Tables created successfully.\")\n",
-    "\n",
-    "# Insert sample data\n",
-    "cursor.execute('''\n",
-    "    INSERT OR IGNORE INTO Clinic (clinicNo, cName, cAddress, cPhone) VALUES\n",
-    "    (6, 'Paws Miami', '101 Ocean Dr, Miami, FL', '3051234567'),\n",
-    "    (7, 'Pet Paradise', '202 Beach Ave, Miami, FL', '3052345678'),\n",
-    "    (8, 'Miami Paw Care', '303 Biscayne Blvd, Miami, FL', '3053456789'),\n",
-    "    (9, 'Happy Pets Miami', '404 Sunset Rd, Miami, FL', '3054567890'),\n",
-    "    (10, 'VetCare Miami', '505 Brickell Ave, Miami, FL', '3055678901');\n",
-    "''')\n",
-    "\n",
-    "cursor.execute('''\n",
-    "    INSERT OR IGNORE INTO Staff (staffNo, sName, sAddress, sPhone, sDOB, position, salary, clinicNo) VALUES\n",
-    "    (6, 'Carlos Mendez', '123 Ocean Dr, Miami, FL', '3051234567', '1980-11-10', 'Veterinarian', 85000, 6),\n",
-    "    (7, 'Sofia Martinez', '234 Beach Ave, Miami, FL', '3052345678', '1992-06-15', 'Receptionist', 40000, 7),\n",
-    "    (8, 'Daniela Garcia', '345 Biscayne Blvd, Miami, FL', '3053456789', '1995-03-05', 'Technician', 50000, 8),\n",
-    "    (9, 'Ricardo Lopez', '456 Sunset Rd, Miami, FL', '3054567890', '1987-09-25', 'Veterinarian', 80000, 9),\n",
-    "    (10, 'Maria Perez', '567 Brickell Ave, Miami, FL', '3055678901', '1990-01-18', 'Technician', 55000, 10);\n",
-    "''')\n",
-    "\n",
-    "cursor.execute('''\n",
-    "    INSERT OR IGNORE INTO Owner (ownerNo, oName, oAddress, oPhone) VALUES\n",
-    "    (6, 'Ana Rodriguez', '789 Bay Rd, Miami, FL', '7861234567'),\n",
-    "    (7, 'Juan Torres', '890 Coral Way, Miami, FL', '7862345678'),\n",
-    "    (8, 'Luis Alvarez', '567 Flagler St, Miami, FL', '7863456789'),\n",
-    "    (9, 'Elena Sanchez', '345 Little Havana, Miami, FL', '7864567890'),\n",
-    "    (10, 'Miguel Diaz', '123 Coconut Grove, Miami, FL', '7865678901');\n",
-    "''')\n",
-    "\n",
-    "cursor.execute('''\n",
-    "    INSERT OR IGNORE INTO Pet (petNo, pName, pDOB, species, breed, color, ownerNo, clinicNo) VALUES\n",
-    "    (6, 'Rocky', '2018-12-10', 'Dog', 'Bulldog', 'Brown', 6, 6),\n",
-    "    (7, 'Luna', '2019-04-22', 'Cat', 'Sphynx', 'Beige', 7, 7),\n",
-    "    (8, 'Max', '2021-08-05', 'Dog', 'Beagle', 'Tri-color', 8, 8),\n",
-    "    (9, 'Milo', '2020-01-15', 'Rabbit', 'Holland Lop', 'White', 9, 9),\n",
-    "    (10, 'Chloe', '2022-02-28', 'Bird', 'Parrot', 'Green', 10, 10);\n",
-    "''')\n",
-    "\n",
-    "cursor.execute('''\n",
-    "    INSERT OR IGNORE INTO Examination (examNo, complaint, description, date, action, petNo, staffNo) VALUES\n",
-    "    (6, 'Limping', 'Checked leg; no fracture found', '2023-01-15', 'Prescribed rest and pain relief', 6, 6),\n",
-    "    (7, 'Hair Loss', 'Examined skin and conducted allergy test', '2023-02-10', 'Prescribed special shampoo', 7, 7),\n",
-    "    (8, 'Coughing', 'Checked throat and chest X-ray', '2023-03-20', 'Prescribed antibiotics', 8, 8),\n",
-    "    (9, 'Weight Loss', 'Blood tests and physical examination', '2023-04-25', 'Prescribed vitamins and diet plan', 9, 9),\n",
-    "    (10, 'Broken Wing', 'X-ray and bandage applied', '2023-05-15', 'Scheduled follow-up', 10, 10);\n",
-    "''')\n",
-    "\n",
-    "# Create triggers for date validation\n",
-    "cursor.execute('''\n",
-    "    CREATE TRIGGER IF NOT EXISTS trg_check_sDOB\n",
-    "    BEFORE INSERT ON Staff\n",
-    "    FOR EACH ROW\n",
-    "    BEGIN\n",
-    "        SELECT CASE\n",
-    "            WHEN NEW.sDOB >= DATE('now') THEN\n",
-    "                RAISE(ABORT, 'sDOB must be a valid date in the past.')\n",
-    "        END;\n",
-    "    END;\n",
-    "''')\n",
-    "\n",
-    "cursor.execute('''\n",
-    "    CREATE TRIGGER IF NOT EXISTS trg_check_pDOB\n",
-    "    BEFORE INSERT ON Pet\n",
-    "    FOR EACH ROW\n",
-    "    BEGIN\n",
-    "        SELECT CASE\n",
-    "            WHEN NEW.pDOB >= DATE('now') THEN\n",
-    "                RAISE(ABORT, 'pDOB must be a valid date in the past.')\n",
-    "        END;\n",
-    "    END;\n",
-    "''')\n",
-    "\n",
-    "cursor.execute('''\n",
-    "    CREATE TRIGGER IF NOT EXISTS trg_check_exam_date\n",
-    "    BEFORE INSERT ON Examination\n",
-    "    FOR EACH ROW\n",
-    "    BEGIN\n",
-    "        SELECT CASE\n",
-    "            WHEN NEW.date > DATE('now') THEN\n",
-    "                RAISE(ABORT, 'Examination date must be in the past or current date.')\n",
-    "        END;\n",
-    "    END;\n",
-    "''')\n",
-    "\n",
-    "print(\"Triggers created successfully.\")\n",
-    "\n",
-    "\n",
-    "db_connect.commit()\n",
-    "print(\"Sample data inserted successfully.\")\n",
-    "\n",
-    "# Display all data\n",
-    "table_names = [\"Clinic\", \"Staff\", \"Owner\", \"Pet\", \"Examination\"]\n",
-    "for table_name in table_names:\n",
-    "    print(f\"\\nData from {table_name}:\")\n",
-    "    cursor.execute(f\"SELECT * FROM {table_name};\")\n",
-    "    rows = cursor.fetchall()\n",
-    "    for row in rows:\n",
-    "        print(row)\n",
-    "\n",
-    "# Close database connection\n",
-    "db_connect.close()\n"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 10,
-   "id": "d67c0da4-f820-4634-99ea-a8903d8e97b7",
-   "metadata": {},
-   "outputs": [
-    {
-     "ename": "OperationalError",
-     "evalue": "database is locked",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mOperationalError\u001b[0m                          Traceback (most recent call last)",
-      "Cell \u001b[0;32mIn[10], line 8\u001b[0m\n\u001b[1;32m      5\u001b[0m cursor \u001b[38;5;241m=\u001b[39m db_connect\u001b[38;5;241m.\u001b[39mcursor()\n\u001b[1;32m      7\u001b[0m \u001b[38;5;66;03m# Transaction 1: Add a New Pet\u001b[39;00m\n\u001b[0;32m----> 8\u001b[0m cursor\u001b[38;5;241m.\u001b[39mexecute(\u001b[38;5;124m'''\u001b[39m\n\u001b[1;32m      9\u001b[0m \u001b[38;5;124m    INSERT INTO Pet (petNo, pName, pDOB, species, breed, color, ownerNo, clinicNo)\u001b[39m\n\u001b[1;32m     10\u001b[0m \u001b[38;5;124m    VALUES (11, \u001b[39m\u001b[38;5;124m'\u001b[39m\u001b[38;5;124mSimba\u001b[39m\u001b[38;5;124m'\u001b[39m\u001b[38;5;124m, \u001b[39m\u001b[38;5;124m'\u001b[39m\u001b[38;5;124m2021-06-10\u001b[39m\u001b[38;5;124m'\u001b[39m\u001b[38;5;124m, \u001b[39m\u001b[38;5;124m'\u001b[39m\u001b[38;5;124mDog\u001b[39m\u001b[38;5;124m'\u001b[39m\u001b[38;5;124m, \u001b[39m\u001b[38;5;124m'\u001b[39m\u001b[38;5;124mShih Tzu\u001b[39m\u001b[38;5;124m'\u001b[39m\u001b[38;5;124m, \u001b[39m\u001b[38;5;124m'\u001b[39m\u001b[38;5;124mBrown\u001b[39m\u001b[38;5;124m'\u001b[39m\u001b[38;5;124m, 6, 6);\u001b[39m\n\u001b[1;32m     11\u001b[0m \u001b[38;5;124m'''\u001b[39m)\n\u001b[1;32m     12\u001b[0m \u001b[38;5;28mprint\u001b[39m(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mNew pet added successfully.\u001b[39m\u001b[38;5;124m\"\u001b[39m)\n\u001b[1;32m     14\u001b[0m \u001b[38;5;66;03m# Transaction 2: Record an Examination\u001b[39;00m\n",
-      "\u001b[0;31mOperationalError\u001b[0m: database is locked"
-     ]
-    }
-   ],
-   "source": [
-    "import sqlite3\n",
-    "\n",
-    "# Connect to the SQLite database\n",
-    "db_connect = sqlite3.connect('pawsome_pets_final.db')\n",
-    "cursor = db_connect.cursor()\n",
-    "\n",
-    "# Transaction 1: Add a New Pet\n",
-    "cursor.execute('''\n",
-    "    INSERT INTO Pet (petNo, pName, pDOB, species, breed, color, ownerNo, clinicNo)\n",
-    "    VALUES (11, 'Simba', '2021-06-10', 'Dog', 'Shih Tzu', 'Brown', 6, 6);\n",
-    "''')\n",
-    "print(\"New pet added successfully.\")\n",
-    "\n",
-    "# Transaction 2: Record an Examination\n",
-    "cursor.execute('''\n",
-    "    INSERT INTO Examination (examNo, complaint, description, date, action, petNo, staffNo)\n",
-    "    VALUES (11, 'Skin Rash', 'Applied ointment and prescribed medication', '2023-11-28', 'Follow-up in 2 weeks', 6, 6);\n",
-    "''')\n",
-    "print(\"New examination recorded successfully.\")\n",
-    "\n",
-    "# Transaction 3: Assign a Staff Member to a Clinic\n",
-    "cursor.execute('''\n",
-    "    INSERT INTO Staff (staffNo, sName, sAddress, sPhone, sDOB, position, salary, clinicNo)\n",
-    "    VALUES (11, 'Gabriela Flores', '890 Brickell Ave, Miami, FL', '3056789012', '1993-12-15', 'Technician', 45000, 10);\n",
-    "''')\n",
-    "print(\"New staff member assigned to a clinic successfully.\")\n",
-    "\n",
-    "# Transaction 4: Change Clinic Staff\n",
-    "cursor.execute('''\n",
-    "    UPDATE Clinic\n",
-    "    SET staffNo = 7\n",
-    "    WHERE clinicNo = 7;\n",
-    "''')\n",
-    "print(\"Clinic staff changed successfully.\")\n",
-    "\n",
-    "# Transaction 5: Retrieve a Pet’s Examination History\n",
-    "cursor.execute('''\n",
-    "    SELECT Examination.examNo, Examination.complaint, Examination.description, Examination.date, Examination.action\n",
-    "    FROM Examination\n",
-    "    INNER JOIN Pet ON Examination.petNo = Pet.petNo\n",
-    "    WHERE Pet.petNo = 6;\n",
-    "''')\n",
-    "rows = cursor.fetchall()\n",
-    "print(\"\\nExamination history for Pet 6:\")\n",
-    "for row in rows:\n",
-    "    print(row)\n",
-    "\n",
-    "# Commit changes and close the connection\n",
-    "db_connect.commit()\n",
-    "db_connect.close()\n"
-   ]
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3 (ipykernel)",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.12.4"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 5
-}
+import sqlite3
+
+# Connect to the SQLite database
+db_connect = sqlite3.connect('pawsome_pets_final.db')
+cursor = db_connect.cursor()
+
+# Create tables
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Clinic (
+        clinicNo INTEGER PRIMARY KEY, 
+        cName TEXT NOT NULL CHECK (length(cName) <= 100), 
+        cAddress TEXT NOT NULL CHECK (length(cAddress) <= 200), 
+        cPhone TEXT NOT NULL CHECK (length(cPhone) = 10 AND cPhone GLOB '[0-9]*'),
+        staffNo INTEGER UNIQUE,
+        FOREIGN KEY (staffNo) REFERENCES Staff(staffNo)
+    );
+''')
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Staff (
+        staffNo INTEGER PRIMARY KEY,
+        sName TEXT NOT NULL CHECK (length(sName) <= 100),
+        sAddress TEXT NOT NULL CHECK (length(sAddress) <= 200),
+        sPhone TEXT NOT NULL CHECK (length(sPhone) = 10 AND sPhone GLOB '[0-9]*'),
+        sDOB DATE NOT NULL,
+        position TEXT NOT NULL CHECK (length(position) <= 50),
+        salary REAL NOT NULL CHECK (salary > 0),
+        clinicNo INTEGER NOT NULL,
+        FOREIGN KEY (clinicNo) REFERENCES Clinic(clinicNo)
+    );
+''')
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Owner (
+        ownerNo INTEGER PRIMARY KEY,
+        oName TEXT NOT NULL CHECK (length(oName) <= 100),
+        oAddress TEXT NOT NULL CHECK (length(oAddress) <= 200),
+        oPhone TEXT NOT NULL CHECK (length(oPhone) = 10 AND oPhone GLOB '[0-9]*')
+    );
+''')
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Pet (
+        petNo INTEGER PRIMARY KEY,
+        pName TEXT NOT NULL CHECK (length(pName) <= 100),
+        pDOB DATE NOT NULL,
+        species TEXT NOT NULL CHECK (length(species) <= 50),
+        breed TEXT NOT NULL CHECK (length(breed) <= 50),
+        color TEXT NOT NULL CHECK (length(color) <= 50),
+        ownerNo INTEGER NOT NULL,
+        clinicNo INTEGER NOT NULL,
+        FOREIGN KEY (ownerNo) REFERENCES Owner(ownerNo),
+        FOREIGN KEY (clinicNo) REFERENCES Clinic(clinicNo)
+    );
+''')
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Examination (
+        examNo INTEGER PRIMARY KEY,
+        complaint TEXT NOT NULL CHECK (length(complaint) <= 500),
+        description TEXT NOT NULL CHECK (length(description) <= 1000),
+        date DATE NOT NULL,
+        action TEXT NOT NULL CHECK (length(action) <= 500),
+        petNo INTEGER NOT NULL,
+        staffNo INTEGER NOT NULL,
+        FOREIGN KEY (petNo) REFERENCES Pet(petNo),
+        FOREIGN KEY (staffNo) REFERENCES Staff(staffNo)
+    );
+''')
+
+print("Tables created successfully.")
+
+# Insert sample data
+cursor.execute('''
+    INSERT OR IGNORE INTO Clinic (clinicNo, cName, cAddress, cPhone) VALUES
+    (6, 'Paws Miami', '101 Ocean Dr, Miami, FL', '3051234567'),
+    (7, 'Pet Paradise', '202 Beach Ave, Miami, FL', '3052345678'),
+    (8, 'Miami Paw Care', '303 Biscayne Blvd, Miami, FL', '3053456789'),
+    (9, 'Happy Pets Miami', '404 Sunset Rd, Miami, FL', '3054567890'),
+    (10, 'VetCare Miami', '505 Brickell Ave, Miami, FL', '3055678901');
+''')
+
+cursor.execute('''
+    INSERT OR IGNORE INTO Staff (staffNo, sName, sAddress, sPhone, sDOB, position, salary, clinicNo) VALUES
+    (6, 'Carlos Mendez', '123 Ocean Dr, Miami, FL', '3051234567', '1980-11-10', 'Veterinarian', 85000, 6),
+    (7, 'Sofia Martinez', '234 Beach Ave, Miami, FL', '3052345678', '1992-06-15', 'Receptionist', 40000, 7),
+    (8, 'Daniela Garcia', '345 Biscayne Blvd, Miami, FL', '3053456789', '1995-03-05', 'Technician', 50000, 8),
+    (9, 'Ricardo Lopez', '456 Sunset Rd, Miami, FL', '3054567890', '1987-09-25', 'Veterinarian', 80000, 9),
+    (10, 'Maria Perez', '567 Brickell Ave, Miami, FL', '3055678901', '1990-01-18', 'Technician', 55000, 10);
+''')
+
+cursor.execute('''
+    INSERT OR IGNORE INTO Owner (ownerNo, oName, oAddress, oPhone) VALUES
+    (6, 'Ana Rodriguez', '789 Bay Rd, Miami, FL', '7861234567'),
+    (7, 'Juan Torres', '890 Coral Way, Miami, FL', '7862345678'),
+    (8, 'Luis Alvarez', '567 Flagler St, Miami, FL', '7863456789'),
+    (9, 'Elena Sanchez', '345 Little Havana, Miami, FL', '7864567890'),
+    (10, 'Miguel Diaz', '123 Coconut Grove, Miami, FL', '7865678901');
+''')
+
+cursor.execute('''
+    INSERT OR IGNORE INTO Pet (petNo, pName, pDOB, species, breed, color, ownerNo, clinicNo) VALUES
+    (6, 'Rocky', '2018-12-10', 'Dog', 'Bulldog', 'Brown', 6, 6),
+    (7, 'Luna', '2019-04-22', 'Cat', 'Sphynx', 'Beige', 7, 7),
+    (8, 'Max', '2021-08-05', 'Dog', 'Beagle', 'Tri-color', 8, 8),
+    (9, 'Milo', '2020-01-15', 'Rabbit', 'Holland Lop', 'White', 9, 9),
+    (10, 'Chloe', '2022-02-28', 'Bird', 'Parrot', 'Green', 10, 10);
+''')
+
+cursor.execute('''
+    INSERT OR IGNORE INTO Examination (examNo, complaint, description, date, action, petNo, staffNo) VALUES
+    (6, 'Limping', 'Checked leg; no fracture found', '2023-01-15', 'Prescribed rest and pain relief', 6, 6),
+    (7, 'Hair Loss', 'Examined skin and conducted allergy test', '2023-02-10', 'Prescribed special shampoo', 7, 7),
+    (8, 'Coughing', 'Checked throat and chest X-ray', '2023-03-20', 'Prescribed antibiotics', 8, 8),
+    (9, 'Weight Loss', 'Blood tests and physical examination', '2023-04-25', 'Prescribed vitamins and diet plan', 9, 9),
+    (10, 'Broken Wing', 'X-ray and bandage applied', '2023-05-15', 'Scheduled follow-up', 10, 10);
+''')
+
+# Create triggers for date validation
+cursor.execute('''
+    CREATE TRIGGER IF NOT EXISTS trg_check_sDOB
+    BEFORE INSERT ON Staff
+    FOR EACH ROW
+    BEGIN
+        SELECT CASE
+            WHEN NEW.sDOB >= DATE('now') THEN
+                RAISE(ABORT, 'sDOB must be a valid date in the past.')
+        END;
+    END;
+''')
+
+cursor.execute('''
+    CREATE TRIGGER IF NOT EXISTS trg_check_pDOB
+    BEFORE INSERT ON Pet
+    FOR EACH ROW
+    BEGIN
+        SELECT CASE
+            WHEN NEW.pDOB >= DATE('now') THEN
+                RAISE(ABORT, 'pDOB must be a valid date in the past.')
+        END;
+    END;
+''')
+
+cursor.execute('''
+    CREATE TRIGGER IF NOT EXISTS trg_check_exam_date
+    BEFORE INSERT ON Examination
+    FOR EACH ROW
+    BEGIN
+        SELECT CASE
+            WHEN NEW.date > DATE('now') THEN
+                RAISE(ABORT, 'Examination date must be in the past or current date.')
+        END;
+    END;
+''')
+
+print("Triggers created successfully.")
+
+
+db_connect.commit()
+print("Sample data inserted successfully.")
+
+# Display all data
+table_names = ["Clinic", "Staff", "Owner", "Pet", "Examination"]
+for table_name in table_names:
+    print(f"\nData from {table_name}:")
+    cursor.execute(f"SELECT * FROM {table_name};")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+
+# Close database connection
+db_connect.close()
+
+import sqlite3
+
+# Connect to the SQLite database
+db_connect = sqlite3.connect('pawsome_pets_final.db')
+cursor = db_connect.cursor()
+
+# Transaction 1: Add a New Pet
+cursor.execute('''
+    INSERT INTO Pet (petNo, pName, pDOB, species, breed, color, ownerNo, clinicNo)
+    VALUES (11, 'Simba', '2021-06-10', 'Dog', 'Shih Tzu', 'Brown', 6, 6);
+''')
+print("New pet added successfully.")
+
+# Transaction 2: Record an Examination
+cursor.execute('''
+    INSERT INTO Examination (examNo, complaint, description, date, action, petNo, staffNo)
+    VALUES (11, 'Skin Rash', 'Applied ointment and prescribed medication', '2023-11-28', 'Follow-up in 2 weeks', 6, 6);
+''')
+print("New examination recorded successfully.")
+
+# Transaction 3: Assign a Staff Member to a Clinic
+cursor.execute('''
+    INSERT INTO Staff (staffNo, sName, sAddress, sPhone, sDOB, position, salary, clinicNo)
+    VALUES (11, 'Gabriela Flores', '890 Brickell Ave, Miami, FL', '3056789012', '1993-12-15', 'Technician', 45000, 10);
+''')
+print("New staff member assigned to a clinic successfully.")
+
+# Transaction 4: Change Clinic Staff
+cursor.execute('''
+    UPDATE Clinic
+    SET staffNo = 7
+    WHERE clinicNo = 7;
+''')
+print("Clinic staff changed successfully.")
+
+# Transaction 5: Retrieve a Pet’s Examination History
+cursor.execute('''
+    SELECT Examination.examNo, Examination.complaint, Examination.description, Examination.date, Examination.action
+    FROM Examination
+    INNER JOIN Pet ON Examination.petNo = Pet.petNo
+    WHERE Pet.petNo = 6;
+''')
+rows = cursor.fetchall()
+print("\nExamination history for Pet 6:")
+for row in rows:
+    print(row)
+
+# Commit changes and close the connection
+db_connect.commit()
+db_connect.close()
