@@ -1,0 +1,740 @@
+{
+  "name": "root",
+  "children": [
+    {
+      "Property Name": "Gables One Tower",
+      "Property Usage": "Administration",
+      "GSF": "465,362.00"
+    },
+    {
+      "Property Name": "Ashe Administration Building",
+      "Property Usage": "Administration",
+      "GSF": "76,650.00"
+    },
+    {
+      "Property Name": "Newman Alumni Center",
+      "Property Usage": "Administration",
+      "GSF": "66,596.00"
+    },
+    {
+      "Property Name": "Long Jr. & Smith Student Services Building",
+      "Property Usage": "Administration",
+      "GSF": "38,490.00"
+    },
+    {
+      "Property Name": "Pentland House",
+      "Property Usage": "Administration",
+      "GSF": "14,360.00"
+    },
+    {
+      "Property Name": "McKnight Building",
+      "Property Usage": "Administration",
+      "GSF": "11,116.00"
+    },
+    {
+      "Property Name": "Casa Bacardi",
+      "Property Usage": "Administration",
+      "GSF": "10,897.00"
+    },
+    {
+      "Property Name": "Pick Hall",
+      "Property Usage": "Administration",
+      "GSF": "6,115.00"
+    },
+    {
+      "Property Name": "Music Administration Center",
+      "Property Usage": "Administration",
+      "GSF": "3,680.00"
+    },
+    {
+      "Property Name": "1552 Brescia",
+      "Property Usage": "Administration",
+      "GSF": "3,569.00"
+    },
+    {
+      "Property Name": "Soffer Indoor Practice Facility",
+      "Property Usage": "Athletics",
+      "GSF": "101,767.00"
+    },
+    {
+      "Property Name": "Hecht Athletic Center",
+      "Property Usage": "Athletics",
+      "GSF": "74,547.00"
+    },
+    {
+      "Property Name": "Fieldhouse",
+      "Property Usage": "Athletics",
+      "GSF": "34,944.00"
+    },
+    {
+      "Property Name": "Schwartz Center for Athletic Excellence",
+      "Property Usage": "Athletics",
+      "GSF": "34,192.00"
+    },
+    {
+      "Property Name": "Knight Sports Complex",
+      "Property Usage": "Athletics",
+      "GSF": "30,690.00"
+    },
+    {
+      "Property Name": "Rodriguez Park",
+      "Property Usage": "Athletics",
+      "GSF": "27,528.00"
+    },
+    {
+      "Property Name": "6565 Red Road C",
+      "Property Usage": "Athletics",
+      "GSF": "12,796.00"
+    },
+    {
+      "Property Name": "Klotz Player Development Center",
+      "Property Usage": "Athletics",
+      "GSF": "7,008.00"
+    },
+    {
+      "Property Name": "Fraser Baseball Building",
+      "Property Usage": "Athletics",
+      "GSF": "6,115.00"
+    },
+    {
+      "Property Name": "Schiff Tennis Center",
+      "Property Usage": "Athletics",
+      "GSF": "4,595.00"
+    },
+    {
+      "Property Name": "Kearns Hall Of Fame",
+      "Property Usage": "Athletics",
+      "GSF": "3,723.00"
+    },
+    {
+      "Property Name": "Schiff Tennis House",
+      "Property Usage": "Athletics",
+      "GSF": "2,264.00"
+    },
+    {
+      "Property Name": "Cobb Stadium",
+      "Property Usage": "Athletics",
+      "GSF": "2,104.00"
+    },
+    {
+      "Property Name": "Visitor Dugout",
+      "Property Usage": "Athletics",
+      "GSF": 473
+    },
+    {
+      "Property Name": "Lennar Foundtn Medical Center",
+      "Property Usage": "Clinical",
+      "GSF": "238,930.00"
+    },
+    {
+      "Property Name": "Watsco Center",
+      "Property Usage": "Cultural",
+      "GSF": "238,101.00"
+    },
+    {
+      "Property Name": "Lowe Art Museum",
+      "Property Usage": "Cultural",
+      "GSF": "42,947.00"
+    },
+    {
+      "Property Name": "Knight Center for Music Innovation",
+      "Property Usage": "Cultural",
+      "GSF": "31,390.00"
+    },
+    {
+      "Property Name": "Gusman Concert Hall",
+      "Property Usage": "Cultural",
+      "GSF": "29,450.00"
+    },
+    {
+      "Property Name": "Herman Ring Theatre",
+      "Property Usage": "Cultural",
+      "GSF": "17,185.00"
+    },
+    {
+      "Property Name": "Mahoney-Pearson Dining Hall",
+      "Property Usage": "Dining",
+      "GSF": "22,012.00"
+    },
+    {
+      "Property Name": "Cox Science Building",
+      "Property Usage": "Education",
+      "GSF": "199,653.00"
+    },
+    {
+      "Property Name": "Merrick Building",
+      "Property Usage": "Education",
+      "GSF": "107,672.00"
+    },
+    {
+      "Property Name": "McArthur Engineering Building",
+      "Property Usage": "Education",
+      "GSF": "99,156.00"
+    },
+    {
+      "Property Name": "Knight Physics Building",
+      "Property Usage": "Education",
+      "GSF": "91,306.00"
+    },
+    {
+      "Property Name": "Dooly Memorial Classroom Building",
+      "Property Usage": "Education",
+      "GSF": "76,004.00"
+    },
+    {
+      "Property Name": "Wolfson Building",
+      "Property Usage": "Education",
+      "GSF": "70,488.00"
+    },
+    {
+      "Property Name": "Flipse Building",
+      "Property Usage": "Education",
+      "GSF": "70,038.00"
+    },
+    {
+      "Property Name": "Jenkins Building",
+      "Property Usage": "Education",
+      "GSF": "69,877.00"
+    },
+    {
+      "Property Name": "Ungar Building",
+      "Property Usage": "Education",
+      "GSF": "59,683.00"
+    },
+    {
+      "Property Name": "Schwartz Center for Nursing & Health Studies",
+      "Property Usage": "Education",
+      "GSF": "54,719.00"
+    },
+    {
+      "Property Name": "Aresty Building",
+      "Property Usage": "Education",
+      "GSF": "52,368.00"
+    },
+    {
+      "Property Name": "Nursing Simulation Hospital",
+      "Property Usage": "Education",
+      "GSF": "42,420.00"
+    },
+    {
+      "Property Name": "Whitten Learning Center",
+      "Property Usage": "Education",
+      "GSF": "39,558.00"
+    },
+    {
+      "Property Name": "Allen Hall",
+      "Property Usage": "Education",
+      "GSF": "35,873.00"
+    },
+    {
+      "Property Name": "Law Classroom Building (F)",
+      "Property Usage": "Education",
+      "GSF": "34,788.00"
+    },
+    {
+      "Property Name": "Orovitz Building",
+      "Property Usage": "Education",
+      "GSF": "34,365.00"
+    },
+    {
+      "Property Name": "Frost North Studio Wing",
+      "Property Usage": "Education",
+      "GSF": "31,479.00"
+    },
+    {
+      "Property Name": "Communication International Building",
+      "Property Usage": "Education",
+      "GSF": "31,063.00"
+    },
+    {
+      "Property Name": "1300 Campo Sano",
+      "Property Usage": "Education",
+      "GSF": "26,329.00"
+    },
+    {
+      "Property Name": "La Gorce House, Architecture",
+      "Property Usage": "Education",
+      "GSF": "25,631.00"
+    },
+    {
+      "Property Name": "Stubblefield Classroom Building",
+      "Property Usage": "Education",
+      "GSF": "23,997.00"
+    },
+    {
+      "Property Name": "McArthur Addition",
+      "Property Usage": "Education",
+      "GSF": "22,505.00"
+    },
+    {
+      "Property Name": "Murphy Design Studio",
+      "Property Usage": "Education",
+      "GSF": "20,967.00"
+    },
+    {
+      "Property Name": "Rehearsal Center",
+      "Property Usage": "Education",
+      "GSF": "20,502.00"
+    },
+    {
+      "Property Name": "Theatre Arts Building",
+      "Property Usage": "Education",
+      "GSF": "19,788.00"
+    },
+    {
+      "Property Name": "Epstein/Kosar Faculty Building",
+      "Property Usage": "Education",
+      "GSF": "18,593.00"
+    },
+    {
+      "Property Name": "Architecture (48)",
+      "Property Usage": "Education",
+      "GSF": "18,535.00"
+    },
+    {
+      "Property Name": "Foster Memorial Music Building",
+      "Property Usage": "Education",
+      "GSF": "18,515.00"
+    },
+    {
+      "Property Name": "Architecture (49)",
+      "Property Usage": "Education",
+      "GSF": "18,392.00"
+    },
+    {
+      "Property Name": "Meyer Law Administration (A)",
+      "Property Usage": "Education",
+      "GSF": "17,690.00"
+    },
+    {
+      "Property Name": "Rainbow Building",
+      "Property Usage": "Education",
+      "GSF": "16,189.00"
+    },
+    {
+      "Property Name": "Frost South Studio Wing",
+      "Property Usage": "Education",
+      "GSF": "16,004.00"
+    },
+    {
+      "Property Name": "Silvers And Rubenstein Hall (E)",
+      "Property Usage": "Education",
+      "GSF": "14,040.00"
+    },
+    {
+      "Property Name": "Weeks Center For Recording",
+      "Property Usage": "Education",
+      "GSF": "12,503.00"
+    },
+    {
+      "Property Name": "Volpe Classroom Building",
+      "Property Usage": "Education",
+      "GSF": "11,893.00"
+    },
+    {
+      "Property Name": "Dooley Building (C)",
+      "Property Usage": "Education",
+      "GSF": "11,314.00"
+    },
+    {
+      "Property Name": "Perez Architecture Center",
+      "Property Usage": "Education",
+      "GSF": "11,179.00"
+    },
+    {
+      "Property Name": "Ferre Building",
+      "Property Usage": "Education",
+      "GSF": "10,513.00"
+    },
+    {
+      "Property Name": "Lau Founders Hall",
+      "Property Usage": "Education",
+      "GSF": "10,272.00"
+    },
+    {
+      "Property Name": "Studio Arts Building",
+      "Property Usage": "Education",
+      "GSF": "6,592.00"
+    },
+    {
+      "Property Name": "6565 Red Road B",
+      "Property Usage": "Education",
+      "GSF": "5,065.00"
+    },
+    {
+      "Property Name": "6565 Red Road A",
+      "Property Usage": "Education",
+      "GSF": "4,030.00"
+    },
+    {
+      "Property Name": "Messinger Music Executive Building",
+      "Property Usage": "Education",
+      "GSF": "2,451.00"
+    },
+    {
+      "Property Name": "Miller BuildLab",
+      "Property Usage": "Education",
+      "GSF": "1,848.00"
+    },
+    {
+      "Property Name": "Richter Library",
+      "Property Usage": "Library",
+      "GSF": "218,279.00"
+    },
+    {
+      "Property Name": "Meyer Law Library (G)",
+      "Property Usage": "Library",
+      "GSF": "50,552.00"
+    },
+    {
+      "Property Name": "Daner Law Library Wing (B)",
+      "Property Usage": "Library",
+      "GSF": "38,915.00"
+    },
+    {
+      "Property Name": "Meyer Law Library (D)",
+      "Property Usage": "Library",
+      "GSF": "32,607.00"
+    },
+    {
+      "Property Name": "Weeks Music Library & Technology Center",
+      "Property Usage": "Library",
+      "GSF": "28,465.00"
+    },
+    {
+      "Property Name": "1535 Levante",
+      "Property Usage": "Operational",
+      "GSF": "48,872.00"
+    },
+    {
+      "Property Name": "Central Energy Plant 2, CV",
+      "Property Usage": "Operational",
+      "GSF": "8,285.00"
+    },
+    {
+      "Property Name": "Utility Building 1, Ungar",
+      "Property Usage": "Operational",
+      "GSF": "7,331.00"
+    },
+    {
+      "Property Name": "Centrex Building",
+      "Property Usage": "Operational",
+      "GSF": "6,281.00"
+    },
+    {
+      "Property Name": "5855 Ponce De Leon Blvd",
+      "Property Usage": "Operational",
+      "GSF": "5,342.00"
+    },
+    {
+      "Property Name": "Utility Building 3, MP",
+      "Property Usage": "Operational",
+      "GSF": "4,445.00"
+    },
+    {
+      "Property Name": "6230 SW 57 Ave",
+      "Property Usage": "Operational",
+      "GSF": "3,063.00"
+    },
+    {
+      "Property Name": "5827 Ponce De Leon Blvd",
+      "Property Usage": "Operational",
+      "GSF": "1,923.00"
+    },
+    {
+      "Property Name": "Merrick Pavilion",
+      "Property Usage": "Operational",
+      "GSF": "801"
+    },
+    {
+      "Property Name": "Wolfson Parking Lot Chiller Enclosure",
+      "Property Usage": "Operational",
+      "GSF": "763"
+    },
+    {
+      "Property Name": "Cox Generator Enclosure",
+      "Property Usage": "Operational",
+      "GSF": "763"
+    },
+    {
+      "Property Name": "Utility Building 5, BMB",
+      "Property Usage": "Operational",
+      "GSF": "380"
+    },
+    {
+      "Property Name": "Stanford Drive Gatehouse",
+      "Property Usage": "Operational",
+      "GSF": "139"
+    },
+    {
+      "Property Name": "Knight Physics Storage",
+      "Property Usage": "Operational",
+      "GSF": "83"
+    },
+    {
+      "Property Name": "Memorial Drive Gatehouse",
+      "Property Usage": "Operational",
+      "GSF": "53"
+    },
+    {
+      "Property Name": "Central Energy Plant 1, Lennar",
+      "Property Usage": "Operational",
+      "GSF": "11,895.00"
+    },
+    {
+      "Property Name": "Levante Garage",
+      "Property Usage": "Parking Garage",
+      "GSF": "272,622.00"
+    },
+    {
+      "Property Name": "Pavia Garage",
+      "Property Usage": "Parking Garage",
+      "GSF": "262,560.00"
+    },
+    {
+      "Property Name": "University Village Albenga Garage",
+      "Property Usage": "Parking Garage",
+      "GSF": "235,752.00"
+    },
+    {
+      "Property Name": "Mahoney-Pearson Garage",
+      "Property Usage": "Parking Garage",
+      "GSF": "173,518.00"
+    },
+    {
+      "Property Name": "University Village Scodella Garage",
+      "Property Usage": "Parking Garage",
+      "GSF": "60,933.00"
+    },
+    {
+      "Property Name": "University Village Townhouse A Garage 1",
+      "Property Usage": "Parking Garage",
+      "GSF": "993"
+    },
+    {
+      "Property Name": "University Village Townhouse B Garage 1",
+      "Property Usage": "Parking Garage",
+      "GSF": "993"
+    },
+    {
+      "Property Name": "University Village Townhouse B Garage 2",
+      "Property Usage": "Parking Garage",
+      "GSF": "993"
+    },
+    {
+      "Property Name": "University Village Townhouse C Garage 2",
+      "Property Usage": "Parking Garage",
+      "GSF": "993"
+    },
+    {
+      "Property Name": "University Village Townhouse A Garage 2",
+      "Property Usage": "Parking Garage",
+      "GSF": "658"
+    },
+    {
+      "Property Name": "University Village Townhouse C Garage 1",
+      "Property Usage": "Parking Garage",
+      "GSF": "658"
+    },
+    {
+      "Property Name": "Ponce Garage",
+      "Property Usage": "Parking Garage",
+      "GSF": "332,541.00"
+    },
+    {
+      "Property Name": "Frost Institute for Chemistry & Molecular Science",
+      "Property Usage": "Research",
+      "GSF": "97,277.00"
+    },
+    {
+      "Property Name": "Cox Science Annex",
+      "Property Usage": "Research",
+      "GSF": "40,892.00"
+    },
+    {
+      "Property Name": "Behavioral Medicine Building",
+      "Property Usage": "Research",
+      "GSF": "11,148.00"
+    },
+    {
+      "Property Name": "Greenhouse",
+      "Property Usage": "Research",
+      "GSF": "3,454.00"
+    },
+    {
+      "Property Name": "Lakeside Village",
+      "Property Usage": "Residential",
+      "GSF": "602,328.00"
+    },
+    {
+      "Property Name": "Centennial Village B",
+      "Property Usage": "Residential",
+      "GSF": "317,585.00"
+    },
+    {
+      "Property Name": "Pearson Residential College",
+      "Property Usage": "Residential",
+      "GSF": "164,631.00"
+    },
+    {
+      "Property Name": "Mahoney Residential College",
+      "Property Usage": "Residential",
+      "GSF": "164,352.00"
+    },
+    {
+      "Property Name": "Eaton Residential College",
+      "Property Usage": "Residential",
+      "GSF": "101,481.00"
+    },
+    {
+      "Property Name": "University Village 4",
+      "Property Usage": "Residential",
+      "GSF": "60,791.00"
+    },
+    {
+      "Property Name": "University Village 3",
+      "Property Usage": "Residential",
+      "GSF": "60,725.00"
+    },
+    {
+      "Property Name": "University Village 7",
+      "Property Usage": "Residential",
+      "GSF": "60,725.00"
+    },
+    {
+      "Property Name": "University Village 1",
+      "Property Usage": "Residential",
+      "GSF": "44,427.00"
+    },
+    {
+      "Property Name": "University Village 2",
+      "Property Usage": "Residential",
+      "GSF": "42,946.00"
+    },
+    {
+      "Property Name": "University Village 6",
+      "Property Usage": "Residential",
+      "GSF": "42,946.00"
+    },
+    {
+      "Property Name": "University Village 5",
+      "Property Usage": "Residential",
+      "GSF": "30,836.00"
+    },
+    {
+      "Property Name": "Mahoney-Pearson Commons",
+      "Property Usage": "Residential",
+      "GSF": "25,297.00"
+    },
+    {
+      "Property Name": "University Village Townhouse B",
+      "Property Usage": "Residential",
+      "GSF": "11,407.00"
+    },
+    {
+      "Property Name": "University Village Townhouse A",
+      "Property Usage": "Residential",
+      "GSF": "9,389.00"
+    },
+    {
+      "Property Name": "University Village Townhouse C",
+      "Property Usage": "Residential",
+      "GSF": "9,389.00"
+    },
+    {
+      "Property Name": "5230 San Amaro",
+      "Property Usage": "Residential",
+      "GSF": "3,546.00"
+    },
+    {
+      "Property Name": "5720 San Amaro",
+      "Property Usage": "Residential",
+      "GSF": "2,875.00"
+    },
+    {
+      "Property Name": "5700 San Amaro",
+      "Property Usage": "Residential",
+      "GSF": "2,551.00"
+    },
+    {
+      "Property Name": "1531 Mataro",
+      "Property Usage": "Residential",
+      "GSF": "2,139.00"
+    },
+    {
+      "Property Name": "1430 Consolata",
+      "Property Usage": "Residential",
+      "GSF": "2,061.00"
+    },
+    {
+      "Property Name": "1535 Mataro",
+      "Property Usage": "Residential",
+      "GSF": "1,946.00"
+    },
+    {
+      "Property Name": "1555 Mataro",
+      "Property Usage": "Residential",
+      "GSF": "1,855.00"
+    },
+    {
+      "Property Name": "1525 Mataro",
+      "Property Usage": "Residential",
+      "GSF": "1,785.00"
+    },
+    {
+      "Property Name": "1521 Mataro",
+      "Property Usage": "Residential",
+      "GSF": "1,647.00"
+    },
+    {
+      "Property Name": "1511 Mataro",
+      "Property Usage": "Residential",
+      "GSF": "1,530.00"
+    },
+    {
+      "Property Name": "1515 Mataro",
+      "Property Usage": "Residential",
+      "GSF": "1,528.00"
+    },
+    {
+      "Property Name": "Whitten University Center",
+      "Property Usage": "Student Life",
+      "GSF": "172,456.00"
+    },
+    {
+      "Property Name": "Herbert Wellness Center",
+      "Property Usage": "Student Life",
+      "GSF": "139,246.00"
+    },
+    {
+      "Property Name": "Shalala Student Center",
+      "Property Usage": "Student Life",
+      "GSF": "127,670.00"
+    },
+    {
+      "Property Name": "Merritt Panhellenic Building",
+      "Property Usage": "Student Life",
+      "GSF": "24,555.00"
+    },
+    {
+      "Property Name": "Toppel Career Center",
+      "Property Usage": "Student Life",
+      "GSF": "12,342.00"
+    },
+    {
+      "Property Name": "Lakeside Auditorium",
+      "Property Usage": "Student Life",
+      "GSF": "10,762.00"
+    },
+    {
+      "Property Name": "1551 Brescia",
+      "Property Usage": "Student Life",
+      "GSF": "5,193.00"
+    },
+    {
+      "Property Name": "Lakeside Pavilion",
+      "Property Usage": "Student Life",
+      "GSF": "3,563.00"
+    }
+  ]
+}
